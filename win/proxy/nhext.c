@@ -359,6 +359,14 @@ static void nhext_error(int class, const char *fmt, ...)
     va_end(ap);
 }
 
+#if defined(va_copy)
+#define VA_COPY(dst, src)	va_copy(dst, src)
+#elif defined(__va_copy)
+#define VA_COPY(dst, src)	__va_copy(dst, src)
+#else
+#define VA_COPY(dst, src)	((dst) = (src))
+#endif
+
 static int nhext_rpc_vparams1(NhExtXdr *xdrs, int no, va_list *app)
 {
     int retval = TRUE;
@@ -373,7 +381,7 @@ static int nhext_rpc_vparams1(NhExtXdr *xdrs, int no, va_list *app)
     nhext_xdr_bool_t param_b, *param_pb;
     int (*param_codec)();
     void *param_addr;
-    ap = *app;
+    VA_COPY(ap, *app);
     while(retval && no--) {
 	param = va_arg(ap, int);
 	switch(param) {
@@ -442,7 +450,7 @@ static int nhext_rpc_vparams1(NhExtXdr *xdrs, int no, va_list *app)
 		break;
 	}
     }
-    *app = ap;
+    VA_COPY(*app, ap);
     return retval;
 }
 
