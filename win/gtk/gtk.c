@@ -1205,7 +1205,7 @@ focus_in(GtkWidget *widget, GdkEventFocus *event, gpointer data)
     if (!focus_top || w == focus_top->master ||
       g_slist_find(focus_top->slaves, w))
 	return 0;
-    if (focus_top->master)
+    if (focus_top->master && GTK_WIDGET_VISIBLE(focus_top->master))
 	gtk_window_present(focus_top->master);
     return 1;
 }
