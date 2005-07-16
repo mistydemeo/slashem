@@ -1139,7 +1139,7 @@ nhgtk_image_draw_line(GdkImage *img, long c, int x1, int y1, int x2, int y2)
 	else
 	    for(i = y2 - y1 + 1; i; i--) {
 		*dst = (unsigned long)c;
-		(unsigned char *)dst += bpl;
+		dst = (unsigned long *)((unsigned char *)dst + bpl);
 	    }
     } else if (bpp == sizeof(unsigned short)) {
 	unsigned short *dst;
@@ -1150,7 +1150,7 @@ nhgtk_image_draw_line(GdkImage *img, long c, int x1, int y1, int x2, int y2)
 	else
 	    for(i = y2 - y1 + 1; i; i--) {
 		*dst = (unsigned short)c;
-		(unsigned char *)dst += bpl;
+		dst = (unsigned short *)((unsigned char *)dst + bpl);
 	    }
     } else if (bpp == 1) {
 	unsigned char *dst;
