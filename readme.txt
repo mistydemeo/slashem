@@ -65,7 +65,7 @@ http://www.slashem.org/
 1.2 Changes
 -----------
 
-ver 0.0.8E0F2 [?] [Released by ?]
+ver 0.0.8E0F2 [May 13/2017] [Released by Misty]
 -fixed bug 1623835: Compress option required for autoconf
 -fixed bug 1612361: Strange behaviour when selling medical kit
 -fixed bug 1644965: autoconf check for user 'games' fails on Mac OS X
@@ -197,6 +197,7 @@ overhead perspective.
 4.1 The dev-team
 ----------------
 
+o Maintainer: Misty De Meo
 o Project administrators: Warren Cheung and J. Ali Harlow
 o Developers: Pekka Rousu and Clive Crous
 o Mac port: Paul Hurtley
